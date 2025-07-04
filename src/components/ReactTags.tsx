@@ -307,8 +307,7 @@ const ReactTags = (props: ReactTagsProps) => {
     if (
       event.key === 'Backspace' &&
       query === '' &&
-      (allowDeleteFromEmptyInput ||
-        inputFieldPosition === INPUT_FIELD_POSITIONS.INLINE)
+      allowDeleteFromEmptyInput
     ) {
       handleDelete(tags.length - 1, event);
     }
