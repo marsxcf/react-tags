@@ -35,13 +35,13 @@
     "test:watch": "jest --watch --notify --coverage",
     "start": "webpack serve --config webpack-dev-server.config.cjs --progress ",
     "format": "prettier  --write src/**/*.js __tests__/**/*.js",
-    "build": "rm -rf dist-modules &&  webpack --config webpack-production.config.cjs --progress --color && babel src --out-dir dist-modules --copy-files",
-    "build:esm": "rm -rf dist && node buildLib.cjs && yarn gen:types",
+    "build": "rimraf dist-modules && webpack --config webpack-production.config.cjs --progress --color && babel src --out-dir dist-modules --copy-files",
+    "build:esm": "rimraf dist && node buildLib.cjs && yarn gen:types",
     "build:example": "node buildExample.mjs",
     "precommit": "./set_up_hooks.sh",
     "semantic-release": "semantic-release",
     "commit": "git-cz",
-    "gen:types": "rm -rf types && tsc -b src --emitDeclarationOnly"
+    "gen:types": "rimraf types && tsc -b src --emitDeclarationOnly"
   },
   "keywords": [
     "react",
@@ -100,6 +100,7 @@
     "react-dnd": "14.0.0",
     "react-dnd-html5-backend": "14.0.0",
     "react-dom": "18.3.1",
+    "rimraf": "^6.0.1",
     "sass": "1.69.4",
     "sass-loader": "13.3.2",
     "semantic-release": "17.2.3",
