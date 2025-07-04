@@ -38,6 +38,7 @@
     "build": "rimraf dist-modules && webpack --config webpack-production.config.cjs --progress --color && babel src --out-dir dist-modules --copy-files",
     "build:esm": "rimraf dist && node buildLib.cjs && yarn gen:types",
     "build:example": "node buildExample.mjs",
+    "prepare": "npm run build",
     "precommit": "./set_up_hooks.sh",
     "semantic-release": "semantic-release",
     "commit": "git-cz",
