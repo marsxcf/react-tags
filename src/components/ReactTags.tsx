@@ -43,7 +43,7 @@ type ReactTagsProps = ReactTagsWrapperProps & {
   clearAll: boolean;
   ariaAttrs?: {
     clearAllLabel?: string
-  }
+  };
   suggestionsPortalContainer?: HTMLElement | null;
 };
 

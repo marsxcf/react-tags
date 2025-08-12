@@ -208,6 +208,8 @@ export interface ReactTagsWrapperProps {
    * Handler for clearing all the tags.
    */
   onClearAll?: () => void;
+
+  suggestionsPortalContainer?: HTMLElement | null;
 }
 
 const ReactTagsWrapper = (props: ReactTagsWrapperProps) => {
