@@ -1,6 +1,7 @@
 import { ReactNode, createRef, memo, useEffect } from 'react';
 import { isEqual, escape } from 'lodash-es';
 import { Tag } from './SingleTag';
+import ReactDOM from 'react-dom';
 
 const maybeScrollSuggestionIntoView = (
   suggestionEl: HTMLElement,
@@ -85,6 +86,8 @@ interface SuggestionsProps {
    * The minimum length of the query string required to render suggestions.
    */
   minQueryLength?: number;
+
+  portalContainer?: HTMLElement | null;
 }
 
 const SuggestionsComp = (props: SuggestionsProps) => {
@@ -96,6 +99,7 @@ const SuggestionsComp = (props: SuggestionsProps) => {
     classNames,
     selectedIndex,
     query,
+    portalContainer
   } = props;
 
   useEffect(() => {
@@ -161,7 +165,7 @@ const SuggestionsComp = (props: SuggestionsProps) => {
     return null;
   }
 
-  return (
+  const content = (
     <div
       ref={suggestionsContainerRef}
       className={classNames.suggestions}
@@ -169,6 +173,12 @@ const SuggestionsComp = (props: SuggestionsProps) => {
       <ul> {suggestions} </ul>
     </div>
   );
+
+  if (portalContainer) {
+    return ReactDOM.createPortal(content, portalContainer);
+  }
+
+  return content;
 };
 
 export const arePropsEqual = (

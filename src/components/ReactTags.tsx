@@ -44,6 +44,7 @@ type ReactTagsProps = ReactTagsWrapperProps & {
   ariaAttrs?: {
     clearAllLabel?: string
   }
+  suggestionsPortalContainer?: HTMLElement | null;
 };
 
 const ReactTags = (props: ReactTagsProps) => {
@@ -551,6 +552,7 @@ const ReactTags = (props: ReactTagsProps) => {
         isFocused={isFocused}
         classNames={allClassNames}
         renderSuggestion={props.renderSuggestion}
+        portalContainer={props.suggestionsPortalContainer}
       />
       {clearAll && tags.length > 0 && (
         <ClearAllTags aria-label={ariaAttrs?.clearAllLabel } classNames={allClassNames} onClick={handleClearAll} />
